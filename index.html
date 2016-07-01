@@ -1,0 +1,75 @@
+<html data-ng-app="feedy">
+<head>
+
+<title>
+feedy
+</title>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'/>
+<link href='./css/bootstrap.css' rel='stylesheet' type='text/css'/>
+<link href='./css/app.css' rel='stylesheet' type='text/css'/>
+</head>
+<body data-ng-controller="feedyReady as fr">
+  <ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">BBC Techno</h3>
+                </div>
+                <div class="panel-body scroll-class">
+              <div class="row-fluid">
+            <ul class="alert alert-warning">
+                <span class="badge badge-warning" ng-show="fr.bbctechno.length > 0">{{(fr.bbctechno | filter:filterText).length}} Items</span>
+                <li ng-repeat="feed in fr.bbctechno | filter:filterText">                    
+                    <h5><a href="{{feed.link}}">{{feed.title}}</a> </h5>                                     
+                    <p class="text-left">{{feed.contentSnippet}}</p>                    
+                    <span class="small">{{feed.publishedDate}}</span>
+                </li>                
+            </ul>            
+        </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">kat.cr movies</h3>
+                </div>
+                <div class="panel-body scroll-class">
+              <div class="row-fluid">
+            <ul class="alert alert-warning">
+                <span class="badge badge-warning" ng-show="fr.katmov.length > 0">{{(fr.katmov | filter:filterText).length}} Items</span>
+                <li ng-repeat="km in fr.katmov | filter:filterText">                    
+                    <h5><a href="{{km.link}}">{{km.title}}</a> <img data-ng-if="km.hdTrue" class="pulse" style="height: 15px;"src="./img/icon-hd.gif"> </h5>                                        
+                    <p class="text-left">{{km.contentSnippet}}</p>                    
+                    <span class="small">{{km.publishedDate}}</span>
+                </li>                
+            </ul>            
+        </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+  <script type="text/javascript" src="./js/bootstrap.min.js" />
+      </script>
+      <script type="text/javascript" src="./js/angular.min.js" />
+      </script>
+      <script type="text/javascript" src="./js/jquery-2.1.4.min.js" />
+      </script>
+       <script type="text/javascript" src="./js/app.js" />
+      </script>
+</body>
+
+</html>
