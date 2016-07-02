@@ -8,14 +8,24 @@ feedy
 <link href='./css/bootstrap.css' rel='stylesheet' type='text/css'/>
 <link href='./css/app.css' rel='stylesheet' type='text/css'/>
 </head>
-<body data-ng-controller="feedyReady as fr">
+<body data-ng-controller="feedyReady as fr" >
+   <div id="bg">
+  <img ng-src="{{imgsrc}}" alt="">
+  </div>
   <ul class="nav nav-tabs">
+   <li role="presentation" class="active"><a>Feedy</a></li>
   <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
+  <li role="presentation" class="active"><a href="#">Profile</a></li>
+  <li role="presentation" class="active"><a href="#">Messages</a></li>
 </ul>
 <div class="container-fluid">
+ 
     <div class="row">
+      <div class="col-lg-12">
+        <div class="alert alert-success" role="alert">
+          <a href="#" class="alert-link">{{fr.date  | date:'h:mm a'}}</a>
+        </div>
+      </div>
 
         <div class="col-md-6">
             <div class="panel panel-primary">
@@ -25,7 +35,7 @@ feedy
                 <div class="panel-body scroll-class">
               <div class="row-fluid">
             <ul class="alert alert-warning">
-                <span class="badge badge-warning" ng-show="fr.bbctechno.length > 0">{{(fr.bbctechno | filter:filterText).length}} Items</span>
+                <span class="badge badge-warning" ng-show="fr.bbctechno.length > 0">{{(fr.bbctechno ).length}} Items</span>
                 <li ng-repeat="feed in fr.bbctechno | filter:filterText">                    
                     <h5><a href="{{feed.link}}">{{feed.title}}</a> </h5>                                     
                     <p class="text-left">{{feed.contentSnippet}}</p>                    
@@ -46,7 +56,7 @@ feedy
                 <div class="panel-body scroll-class">
               <div class="row-fluid">
             <ul class="alert alert-warning">
-                <span class="badge badge-warning" ng-show="fr.katmov.length > 0">{{(fr.katmov | filter:filterText).length}} Items</span>
+                <span class="badge badge-warning" ng-show="fr.katmov.length > 0">{{(fr.katmov).length}} Items</span>
                 <li ng-repeat="km in fr.katmov | filter:filterText">                    
                     <h5><a href="{{km.link}}">{{km.title}}</a> <img data-ng-if="km.hdTrue" class="pulse" style="height: 15px;"src="./img/icon-hd.gif"> </h5>                                        
                     <p class="text-left">{{km.contentSnippet}}</p>                    
