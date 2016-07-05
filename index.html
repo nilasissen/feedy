@@ -15,15 +15,15 @@ feedy
   <ul class="nav nav-tabs">
    <li role="presentation" class="active"><a>Feedy</a></li>
   <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation" class="active"><a href="#">Profile</a></li>
-  <li role="presentation" class="active"><a href="#">Messages</a></li>
+  <li role="presentation" class="active"><a href="#">Tv series</a></li>
+  <li role="presentation" class="active"><a href="#">News</a></li>
 </ul>
 <div class="container-fluid">
  
     <div class="row">
       <div class="col-lg-12">
         <div class="alert alert-success" role="alert">
-          <a href="#" class="alert-link">{{fr.date  | date:'h:mm a'}}</a>
+          <a href="#" class="alert-link">{{fr.weather[0].title}}</a>
         </div>
       </div>
 
@@ -36,7 +36,7 @@ feedy
               <div class="row-fluid">
             <ul class="alert alert-warning">
                 <span class="badge badge-warning" ng-show="fr.bbctechno.length > 0">{{(fr.bbctechno ).length}} Items</span>
-                <li ng-repeat="feed in fr.bbctechno | filter:filterText">                    
+                <li ng-repeat="feed in fr.bbctechno track by $index ">                    
                     <h5><a href="{{feed.link}}">{{feed.title}}</a> </h5>                                     
                     <p class="text-left">{{feed.contentSnippet}}</p>                    
                     <span class="small">{{feed.publishedDate}}</span>
@@ -57,10 +57,31 @@ feedy
               <div class="row-fluid">
             <ul class="alert alert-warning">
                 <span class="badge badge-warning" ng-show="fr.katmov.length > 0">{{(fr.katmov).length}} Items</span>
-                <li ng-repeat="km in fr.katmov | filter:filterText">                    
+                <li ng-repeat="km in fr.katmov ">                    
                     <h5><a href="{{km.link}}">{{km.title}}</a> <img data-ng-if="km.hdTrue" class="pulse" style="height: 15px;"src="./img/icon-hd.gif"> </h5>                                        
                     <p class="text-left">{{km.contentSnippet}}</p>                    
                     <span class="small">{{km.publishedDate}}</span>
+                </li>                
+            </ul>            
+        </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Kat.cr Tv series</h3>
+                </div>
+                <div class="panel-body scroll-class">
+              <div class="row-fluid">
+            <ul class="alert alert-warning">
+                <span class="badge badge-warning" ng-show="fr.katTvseries.length > 0">{{(fr.katTvseries ).length}} Items</span>
+                <li ng-repeat="kt in fr.katTvseries track by $index ">                    
+                    <h5><a href="{{kt.link}}">{{kt.title}}</a> </h5>                                     
+                    <p class="text-left">{{kt.contentSnippet}}</p>                    
+                    <span class="small">{{kt.publishedDate}}</span>
                 </li>                
             </ul>            
         </div>
