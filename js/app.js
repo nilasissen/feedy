@@ -5,7 +5,8 @@ feedRead.controller('feedyReady', [
     '$http',
     '$rootScope',
     '$filter',
-    function(FeedService, $scope, $http, $rootScope, $filter) {
+    '$interval',
+    function(FeedService, $scope, $http, $rootScope, $filter,$interval) {
         var self = this;
         //self.url = 'http://feeds2.feedburner.com/Mashable';
         //self.url = 'http://feeds.bbci.co.uk/news/rss.xml?edition=int';
@@ -75,6 +76,7 @@ feedRead.controller('feedyReady', [
         // $http.get(self.movieDetails).success(function(data){
         //  console.log(data);   
         // })
+    var init = function(){
         FeedService.parseFeed(self.weatherStat).then(function(res) {
             self.weather = res.data.responseData.feed.entries;
             self.weatherDetails.forEach(function(v, i) {
@@ -92,6 +94,7 @@ feedRead.controller('feedyReady', [
             })
          FeedService.parseFeed(self.katTv).then(function(res) {
                 self.katTvseries = res.data.responseData.feed.entries;
+                console.log(self.katTvseries);
             })
             // for kat.cr moviess
         self.katmov = [];
@@ -108,6 +111,14 @@ feedRead.controller('feedyReady', [
                 })
             }
         })
+
+    }
+    init();
+    $interval(function(){
+        init();
+    },300000)
+
+
 
     }
 ])
