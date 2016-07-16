@@ -29,7 +29,8 @@ feedRead.controller('feedyReady', [
         // conditions.heavy-snow=Heavy Snow
         // conditions.clear-sky=Clear Sky
         // conditions.mist=Mist
-        //conditions.Light-Cloud = Light Cloud
+        //conditions.Light-Cloud = Light Cloud  
+        //conditions. Thick Cloud = Lightnings-in-thick-clouds.jpg
         self.weatherDetails = [{
             "title": "Sunny",
             "img": "./img/sunny.jpg"
@@ -72,11 +73,14 @@ feedRead.controller('feedyReady', [
         }, {
             "title": "Mist",
             "img": "./img/mist.jpg"
-        }, ];
+        }, {
+            "title": "Thick Cloud",
+            "img": "./img/Lightnings-in-thick-clouds.jpg"
+        } ];
         // $http.get(self.movieDetails).success(function(data){
         //  console.log(data);   
         // })
-    var init = function(){
+    self.init = function(){
         FeedService.parseFeed(self.weatherStat).then(function(res) {
             self.weather = res.data.responseData.feed.entries;
             self.weatherDetails.forEach(function(v, i) {
@@ -92,6 +96,7 @@ feedRead.controller('feedyReady', [
         FeedService.parseFeed(self.bbctechno).then(function(res) {
                 self.bbctechno = res.data.responseData.feed.entries;
             })
+        //for kat.cr tv series
          FeedService.parseFeed(self.katTv).then(function(res) {
                 self.katTvseries = res.data.responseData.feed.entries;
                 console.log(self.katTvseries);
@@ -113,12 +118,10 @@ feedRead.controller('feedyReady', [
         })
 
     }
-    init();
+    self.init();
     $interval(function(){
-        init();
+        self.init();
     },300000)
-
-
 
     }
 ])
