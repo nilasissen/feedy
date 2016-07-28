@@ -12,8 +12,8 @@ feedRead.controller('feedyReady', [
         //self.url = 'http://feeds.bbci.co.uk/news/rss.xml?edition=int';
         tmdbApikey = ''
         self.bbctechno = 'http://feeds.bbci.co.uk/news/technology/rss.xml?edition=int';
-        self.katMovies = 'https://kat.cr/movies/?rss=1';
-        self.katTv = 'https://kat.cr/tv/?rss=1';
+        self.katMovies = 'http://www.demonoid.pw/rss/1.xml';
+        self.katTv = 'http://www.demonoid.pw/rss/3.xml';
         self.weatherStat = 'http://open.live.bbc.co.uk/weather/feeds/en/1275004/observations.rss';
         self.movieDetails = 'https://api.themoviedb.org/3/account/id/watchlist/tv/?api_key=319367e06e9fa4e67027a7e887cf3ac0'
         // conditions.sunny=Sunny
